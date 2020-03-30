@@ -1,5 +1,5 @@
 class Snake
-  attributes :size, :direction, :position, :parts
+  attr_reader :size, :direction, :position, :parts
   def initialize(x, y)
     @size = 4
     @direction = :left

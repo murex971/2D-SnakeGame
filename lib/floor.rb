@@ -1,5 +1,5 @@
 class Floor
-  attributes :length, :width, :floor
+  attr_reader :length, :width, :floor
 
   def initialize(width, length)
     @length = length
