@@ -5,7 +5,7 @@ describe Floor do
       expect(Floor.new(40,40).floor).not_to be_nil
     end
   end
-  describe "#create_floor" do
+  describe "#createfloor" do
     let(:gamefloor){Floor.new(40,40)}
     it "returns an array" do
       expect(gamefloor.floor).to be_instance_of(Array)
