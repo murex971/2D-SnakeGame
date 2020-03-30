@@ -22,7 +22,7 @@ class Snake
     parts[1..parts.length-1]
   end
 
-  // randomly set starting position of snake
+  #randomly set starting position of snake
   def setStartPosition(max_x, max_y)
     @position = [Random.rand(0..max_x-1), Random.rand(0..max_y-1)]
   end
@@ -51,7 +51,7 @@ class Snake
     end
   end
 
-  // defines step based on the key
+  #defines step based on the key
   def step
     newHead = [head.first,head.last]
     case direction

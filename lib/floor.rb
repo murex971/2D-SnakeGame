@@ -4,10 +4,10 @@ class Floor
   def initialize(width, length)
     @length = length
     @width = width
-    create_floor
+    createFloor
   end
 
-  // calculates center points of the board
+  #calculates center points of the board
   def center
     [floor.length/2, floor.first.length/2]
   end
@@ -21,7 +21,7 @@ class Floor
     end
   end
 
-  // create the floor and fill it with “.” 
+  #create the floor and fill it with “.” 
   def create_floor
     @floor = Array.new(length){ Array.new(width, '.') }
   end
