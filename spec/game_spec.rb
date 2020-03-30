@@ -11,42 +11,42 @@ describe Game do
   end
 
   it "#check_snake_position checks all checks successfully" do
-    expect{new_game.check_snake_position}.to_not raise_error(AteItselfError)
-    expect{new_game.check_snake_position}.to_not change{new_game.snake.body}
+    expect{new_game.checkSnakePosition}.to_not raise_error(AteItselfError)
+    expect{new_game.checkSnakePosition}.to_not change{new_game.snake.body}
   end
 
   it "#check_if_snake_ate_itself" do
     new_game.snake.parts[0] = new_game.snake.parts.last
-    expect{new_game.check_if_snake_ate_itself}.to raise_error(AteItselfError)
-    expect{new_game.check_snake_position}.to raise_error(AteItselfError)
+    expect{new_game.checkIfSnakeAteItself}.to raise_error(AteItselfError)
+    expect{new_game.checkSnakePosition}.to raise_error(AteItselfError)
   end
 
   it "#check_if_snake_met_wall" do
     new_game.snake.parts[0][1] = new_game.gamefloor.width
-    expect{new_game.check_if_snake_met_wall}.to change{new_game.snake.parts[0][1]}.from(new_game.gamefloor.width).to(0)
+    expect{new_game.checkIfSnakeMetWall}.to change{new_game.snake.parts[0][1]}.from(new_game.gamefloor.width).to(0)
     new_game.snake.parts[0][1] = new_game.gamefloor.width
-    expect{new_game.check_snake_position}.to change{new_game.snake.parts[0][1]}.from(new_game.gamefloor.width).to(0)
+    expect{new_game.checkSnakePosition}.to change{new_game.snake.parts[0][1]}.from(new_game.gamefloor.width).to(0)
   end
 
   it "#check_if_snake_ate_point" do
     new_game.snake.parts[0] = new_game.point.coordinates
-    expect{new_game.check_if_snake_ate_point}.to change{new_game.snake.size}.from(4).to(5)
+    expect{new_game.checkIfSnakeAtePoint}.to change{new_game.snake.size}.from(4).to(5)
     new_game.snake.parts[0] = new_game.point.coordinates
-    expect{new_game.check_snake_position}.to change{new_game.snake.size}.from(5).to(6)
+    expect{new_game.checkSnakePosition}.to change{new_game.snake.size}.from(5).to(6)
   end
 
   it "#compares pressed key" do
-    expect(new_game.compare_key(65, 'a')).to be_truthy
-    expect(new_game.compare_key(65, 'A')).to be_truthy
-    expect(new_game.compare_key(65, 'Q')).to be_falsey
+    expect(new_game.compareKey(65, 'a')).to be_truthy
+    expect(new_game.compareKey(65, 'A')).to be_truthy
+    expect(new_game.compareKey(65, 'Q')).to be_falsey
   end
 
   it "#execute_action quit on Q" do
-    expect(new_game.execute_action('q'.ord)).to eql(false)
+    expect(new_game.executeAction('q'.ord)).to eql(false)
   end
 
   it "#execute_action turn on a" do
-    expect{new_game.execute_action('d'.ord)}.to change{new_game.snake.direction}.from(:left).to(:right)
-    expect(new_game.execute_action('d'.ord)).not_to be_nil
+    expect{new_game.executeAction('d'.ord)}.to change{new_game.snake.direction}.from(:left).to(:right)
+    expect(new_game.executeAction('d'.ord)).not_to be_nil
   end
 end
